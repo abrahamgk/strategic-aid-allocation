@@ -1,0 +1,18 @@
+{
+  "model_type": "kmeans",
+  "feature_names": [
+    "child_mort",
+    "exports",
+    "health",
+    "imports",
+    "income",
+    "inflation",
+    "life_expec",
+    "total_fer",
+    "gdpp"
+  ],
+  "model_meta": {
+    "best_k": 2,
+    "silhouette": 0.2898395153574449
+  }
+}

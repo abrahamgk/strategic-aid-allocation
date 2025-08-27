@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.dll
+
+# Virtual envs
+.venv/
+.venv312/
+
+# Jupyter
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp
+
+# Data & artifacts (keep only tiny, public-safe data)
+data/
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.parquet
+*.joblib
+*.pkl
+
+# Secrets / env
+.env
+.env.*
+*.key
+*.pem

@@ -1,0 +1,21 @@
+{
+  "model_type": "dbscan",
+  "feature_names": [
+    "child_mort",
+    "exports",
+    "health",
+    "imports",
+    "income",
+    "inflation",
+    "life_expec",
+    "total_fer",
+    "gdpp"
+  ],
+  "model_meta": {
+    "eps": 1.1783016915018,
+    "min_samples": 4,
+    "n_clusters": 2,
+    "noise_frac": 0.30538922155688625,
+    "silhouette": 0.40108605692862764
+  }
+}
