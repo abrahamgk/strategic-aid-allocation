@@ -30,23 +30,6 @@ https://public.tableau.com/app/profile/abraham.g.k/viz/StrategicAidAllocation_17
 GitHub repository (this project):
 https://github.com/abrahamgk/strategic-aid-allocation
 
-.
-├─ notebooks/
-│  └─ Strategic_Aid_Allocation.ipynb      # end-to-end analysis
-├─ src/
-│  ├─ clustering_utils.py                  # alignment, label mapping, DBSCAN sweep
-│  ├─ allocation.py                        # Priority Index & Inverse-Radius rules
-│  ├─ plotting.py                          # EDA, diagnostics, personas, side-by-side panels
-│  └─ modeling.py                          # decision tree / logistic regression wrappers
-├─ data/
-│  ├─ raw/                                 # put original CSV here (not tracked)
-│  └─ processed/                           # cached artifacts (optional)
-├─ reports/
-│  ├─ figures/                             # exported figures (optional)
-│  └─ tables/                              # CSV outputs (allocations, rankings)
-├─ requirements.txt
-└─ README.md
-
 
 ## Data
 
@@ -83,3 +66,4 @@ All are surfaced in the notebook (and mirrored in src/ if you script it).
 ## Questions / suggestions?
 
 Open an issue or reach me at gkabraham33@gmail.com
+
