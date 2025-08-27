@@ -2,7 +2,7 @@ Trillion-Dollar Transformation: Finding the “Black Holes” of Need
 
 Data + clustering + simple rules for strategic aid allocation
 
-🧭 What this repo does
+What this repo does
 
 This project turns country-level socio-economic data into an allocation map you can explain on one slide:
 
@@ -22,7 +22,7 @@ Outputs include aligned cluster maps, cluster “personas” (medians), feature 
 
 ⚠️ This is an analytical prototype, not policy advice. It’s designed to be simple, transparent, and easy to adapt.
 
-📦 Repo structure
+Repo structure
 .
 ├─ notebooks/
 │  └─ Strategic_Aid_Allocation.ipynb        # main, end-to-end analysis
@@ -48,8 +48,7 @@ If you’re only using the notebook, you can ignore src/—the notebook contains
 Source: Public country-level dataset from Kaggle (e.g., “Country Development” style datasets).
 Download the CSV and place it at data/raw/countries.csv.
 
-Expected columns (case-insensitive, underscores allowed):
-
+Expected columns (case-insensitive; underscores allowed)
 Column	Meaning (units)
 country	Country name
 child_mort	Under-5 deaths per 1,000 live births
@@ -61,7 +60,6 @@ health	Health spending (% of GDP)
 inflation	Annual inflation (%)
 exports	Exports per capita (% of GDP per capita)
 imports	Imports per capita (% of GDP per capita)
-
 Preprocessing
 
 No imputation needed if the dataset has no missing values.
@@ -70,27 +68,33 @@ Winsorize outliers on income and gdpp using Tukey’s IQR fences.
 
 Standardize all numeric features (z-score) before clustering.
 
-⚙️ Quickstart
+Quickstart
 1) Environment
 # Python 3.10+ recommended
 python -m venv .venv
 source .venv/bin/activate   # (Windows: .venv\Scripts\activate)
 
 pip install -r requirements.txt
-# or, minimal
+
+
+Minimal install:
+
 pip install numpy pandas matplotlib seaborn scikit-learn scipy adjustText joblib
 
 2) Data
 
-Download the CSV from Kaggle and save to data/raw/countries.csv.
+Place your CSV at:
+
+data/raw/countries.csv
 
 3) Run
 
 Notebook: open notebooks/Strategic_Aid_Allocation.ipynb and run all cells.
 
-Outputs: generated in reports/tables/ (CSV) and displayed inline (figures). You can optionally save figures to reports/figures/.
+Outputs: generated in reports/tables/ (CSV) and displayed inline (figures).
+You can optionally save figures to reports/figures/.
 
-🔍 What the notebook does
+What the notebook does
 
 EDA: KDEs, top/bottom bars, correlation heatmap; quick statistical checks (correlations + Welch t-tests).
 
@@ -120,29 +124,31 @@ Method B — Inverse-Radius (coherence): weight ∝ 1 / (distance + ε) to the N
 
 Blend (e.g., 70% B + 30% A), apply floors/caps, renormalize.
 
-Save CSVs: table_top15_global_priority.csv, table_top10_within_cluster.csv, table_allocation_proposal.csv.
+Saves CSVs:
+table_top15_global_priority.csv,
+table_top10_within_cluster.csv,
+table_allocation_proposal.csv.
 
-🧪 Key parameters (where to tweak)
+Key parameters (where to tweak)
 
-Choosing the number of clusters (K):
-Use elbow + silhouette plots in the notebook; K=2 is a sensible default for “Need vs Prosperity,” but you can set any K.
+Choosing K: Use elbow + silhouette plots; K=2 is a sensible default for “Need vs Prosperity,” but set any K as required.
 
-NAME_MAP inference: automatic, based on the mean need score per cluster.
+NAME_MAP inference: automatic, based on mean need score per cluster.
 
-Label selections in plots: pick_labels_spread ensures a diverse, well-spaced set of country annotations (policy seeds + extremes + coverage).
+Label selections in plots: pick_labels_spread ensures diverse, well-spaced annotations (policy seeds + extremes + coverage).
 
-DBSCAN search: the grid over (eps, min_samples) is built from k-distance quantiles + knee; we prioritize clean, low-noise, well-separated outcomes.
+DBSCAN search: the grid over (eps, min_samples) uses k-distance quantiles + knee; we prioritize clean, low-noise, well-separated outcomes.
 
-Allocation guardrails: MIN_PER_COUNTRY, MAX_PER_COUNTRY, and blending weights for A/B.
+Allocation guardrails: MIN_PER_COUNTRY, MAX_PER_COUNTRY, and A/B blending weights.
 
-All parameters are grouped near the top of the relevant notebook sections (and exposed in src/ if you prefer scripts).
+All parameters live near the top of the relevant notebook sections (and in src/ if you prefer scripts).
 
-🧰 Re-use the artifacts (optional)
+Re-use the artifacts (optional)
 
-The notebook includes utility functions to export clustering pipelines (preprocessing + model, centroids, and per-cluster radii for DBSCAN) with joblib.
+Utilities are included to export clustering pipelines (preprocessing + model, centroids, and per-cluster radii for DBSCAN) with joblib.
 Artifacts can be loaded later to label new rows or to compute centroid distances.
 
-📈 Outputs you’ll get
+Outputs you’ll get
 
 Figures: EDA KDEs, correlation heatmap, top/bottom bars, K-Means/Ward diagnostics, side-by-side cluster maps, personas, feature importances, allocation plots.
 
@@ -160,7 +166,9 @@ More than two clusters: set K>2; label multiple “need” attractors; allocate 
 
 Fairness / policy constraints: add floors by region, caps per program, or eligibility filters (governance/readiness).
 
-Time series: repeat by year, track movement toward/away from attractors.
+Time series: repeat by year; track movement toward/away from attractors.
 
 Alternative representations: try contrastive embeddings, graph Laplacians, or causal feature sets—allocation recipes remain the same.
 
+Questions or suggestions?
+Open an issue or reach out: gkabraham33@gmail.com
